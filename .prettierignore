@@ -1,0 +1,7 @@
+/dist
+/.astro
+/build
+/node_modules
+package-lock.json
+yarn.lock
+/public/vendor

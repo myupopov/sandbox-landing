@@ -1,0 +1,28 @@
+---
+interface Props {
+  link: string;
+  name: string;
+}
+
+const { link, name } = Astro.props;
+---
+
+<a href={link}>
+  <div class="nav-button mx-[8px] px-[16px] py-[12px]">
+    <span>{name}</span>
+  </div>
+</a>
+
+<style lang="scss">
+  .nav-button {
+    border-radius: 100px;
+    background-color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 500ms;
+    &:hover {
+      background-color: #1f2d45;
+      color: #ffffff;
+    }
+  }
+</style>

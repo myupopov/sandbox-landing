@@ -1,0 +1,7 @@
+{
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-css-order", "prettier-plugin-tailwindcss"],
+  "singleQuote": true,
+  "trailingComma": "all",
+  "cssDeclarationSorterOrder": "smacss",
+  "printWidth": 120
+}

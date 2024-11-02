@@ -1,0 +1,22 @@
+@mixin proximaNovaFontFace($fileName, $weight, $style) {
+  @font-face {
+    font-style: $style;
+    font-weight: $weight;
+    src: url('/fonts/#{$fileName}.woff2') format('woff2');
+    font-family: 'Proxima Nova';
+    font-display: block;
+  }
+}
+
+@include proximaNovaFontFace('ProximaNova-Thin', 100, normal);
+@include proximaNovaFontFace('ProximaNova-ThinIt', 100, italic);
+@include proximaNovaFontFace('ProximaNova-Light', 200, normal);
+@include proximaNovaFontFace('ProximaNova-LightIt', 200, italic);
+@include proximaNovaFontFace('ProximaNova-Regular', 400, normal);
+@include proximaNovaFontFace('ProximaNova-RegularIt', 400, italic);
+@include proximaNovaFontFace('ProximaNova-Bold', 600, normal);
+@include proximaNovaFontFace('ProximaNova-BoldIt', 600, italic);
+@include proximaNovaFontFace('ProximaNova-Semibold', 500, normal);
+@include proximaNovaFontFace('ProximaNova-SemiboldIt', 500, italic);
+@include proximaNovaFontFace('ProximaNova-Extrabold', 800, normal);
+@include proximaNovaFontFace('ProximaNova-ExtraboldIt', 800, italic);

@@ -1,0 +1,42 @@
+---
+
+import NavButton from './NavButton.astro';
+import logoSvg from '../../images/header/logo.svg';
+
+---
+
+<header class="mt-[12px] h-[64px]">
+  <div class="flex items-center">
+    <div  class="w-[42px] ml-[32px]">
+      <a href="./index.html">
+        <img src={logoSvg.src} alt="logo" />
+      </a>
+    </div>
+    <div class="w-[560px] px-[16px] py-[10px] ml-[64px]">
+
+    </div>
+
+
+
+
+
+  </div>
+  <nav class="hidden flex-row items-center md:flex">
+    <NavButton
+      link="./"
+      name="link"
+    />
+  </nav>
+
+  </div>
+
+  <div id="modal" class="modal hidden">
+  </div>
+
+</header>
+
+<style lang="scss">
+</style>
+
+<script>
+</script>

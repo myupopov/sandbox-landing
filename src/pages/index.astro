@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header/Header.astro';
+
+---
+
+<Layout title="Sandbox">
+  <Header />
+  <div class="wrapper">
+    
+    <main>
+    </main>
+  </div>
+  <div class="contacts">
+    <div class="wrapper">
+    </div>
+  </div>
+  <div class="footer">
+    <div class="wrapper">
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .wrapper {
+    @include pageContent;
+  }
+  .contacts {
+    width: 100%;
+    background-color: #ffffff;
+  }
+  .footer {
+    width: 100%;
+    background-color: #292929;
+  }
+</style>
