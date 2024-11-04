@@ -5,8 +5,7 @@ import mainPng from '../../images/main/main.png';
 import { Picture } from 'astro:assets';
 
 const lang: keyof Object = import.meta.env.PUBLIC_LOCAL;
-const ctn = localizations.main
-
+const ctn = localizations.main;
 ---
 
 <section class="main mt-[16px]">
@@ -16,10 +15,10 @@ const ctn = localizations.main
         <div class="main-welcome"><span>{ctn.welcome[lang]}</span></div>
         <div class="main-title mt-[24px]">{ctn.title[lang]}</div>
         <div class="main-text mt-[24px]">{ctn.text[lang]}</div>
-        <div class="flex mt-[40px]">
+        <div class="mt-[40px] flex">
           <div class="main-button main-button_watch mr-[24px]">
             <div>
-              <img src={playVideoSvg.src} alt={ctn.alt.playVideo[lang].toString()}>
+              <img src={playVideoSvg.src} alt={ctn.alt.playVideo[lang].toString()} />
             </div>
             <span>
               {ctn.watchIntegration[lang]}
@@ -51,54 +50,54 @@ const ctn = localizations.main
     &-container {
       width: 100%;
       height: 100%;
-      background: linear-gradient(253deg, #FDDEE5 10.69%, #DBE7F8 50.6%, #F5E5DF 89.72%);
       border-radius: 24px;
+      background: linear-gradient(253deg, #fddee5 10.69%, #dbe7f8 50.6%, #f5e5df 89.72%);
     }
     &-left {
-      padding: 112px 0;
       width: 45%;
+      padding: 112px 0;
     }
     &-welcome {
       display: flex;
       align-content: flex-start;
       align-items: flex-start;
       width: auto;
+      // toDo: Растягивать по контенту
+      max-width: 238px;
       padding: 4px 12px;
       border-radius: 4px;
       background: $white;
       font-size: 14px;
       line-height: 22px;
-      // toDo: Растягивать по контенту
-      max-width: 238px;
     }
     &-title {
-      color: $black-100;
-      font-size: 64px;
-      font-weight: 700;
-      line-height: 70px;
       max-width: 300px;
+      color: $black-100;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 70px;
     }
     &-text {
+      max-width: 600px;
       font-size: 18px;
       line-height: 30px;
-      max-width: 600px;
     }
     &-button {
       display: flex;
-      padding: 16px 28px;
       align-items: center;
+      padding: 16px 28px;
+      gap: 8px;
       border-radius: 100px;
       font-weight: 500;
       line-height: 26px;
-      gap: 8px;
       cursor: pointer;
       &_watch {
         background: $black-100;
         color: $white;
       }
       &_get-started {
-        border-radius: 100px;
         border: 1px solid $gray-60;
+        border-radius: 100px;
       }
     }
     // Здесь нужно подумать как слева оторабажать отступ по wrapper-у, а картинка должна прилепляться к правому краю
@@ -106,8 +105,8 @@ const ctn = localizations.main
       width: 50%;
     }
     &-picture {
-      transform: translateX(100px);
       padding-top: 50px;
+      transform: translateX(100px);
     }
   }
 </style>
