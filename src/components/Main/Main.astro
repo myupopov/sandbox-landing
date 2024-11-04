@@ -1,0 +1,115 @@
+---
+import { localizations } from '../../scripts/localizations.js';
+import playVideoSvg from '../../images/main/play-video.svg';
+import mainPng from '../../images/main/main.png';
+import { Picture } from 'astro:assets';
+
+const lang: keyof Object = import.meta.env.PUBLIC_LOCAL;
+const ctn = localizations.main
+
+---
+
+<section class="main mt-[16px]">
+  <div class="main-container">
+    <div class="wrapper flex">
+      <div class="main-left">
+        <div class="main-welcome"><span>{ctn.welcome[lang]}</span></div>
+        <div class="main-title mt-[24px]">{ctn.title[lang]}</div>
+        <div class="main-text mt-[24px]">{ctn.text[lang]}</div>
+        <div class="flex mt-[40px]">
+          <div class="main-button main-button_watch mr-[24px]">
+            <div>
+              <img src={playVideoSvg.src} alt={ctn.alt.playVideo[lang].toString()}>
+            </div>
+            <span>
+              {ctn.watchIntegration[lang]}
+            </span>
+          </div>
+          <div class="main-button main-button_get-started">{ctn.getStarted[lang]}</div>
+        </div>
+      </div>
+      <div class="main-right">
+        <Picture
+          src={mainPng}
+          formats={['avif', 'webp']}
+          alt={ctn.alt.mainPng[lang].toString()}
+          class="main-picture"
+          width={mainPng.width / 2}
+          densities={[1.5, 2]}
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .main {
+    width: auto;
+    height: 600px;
+    padding: 0 16px;
+    &-container {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(253deg, #FDDEE5 10.69%, #DBE7F8 50.6%, #F5E5DF 89.72%);
+      border-radius: 24px;
+    }
+    &-left {
+      padding: 112px 0;
+      width: 45%;
+    }
+    &-welcome {
+      display: flex;
+      align-content: flex-start;
+      align-items: flex-start;
+      width: auto;
+      padding: 4px 12px;
+      border-radius: 4px;
+      background: $white;
+      font-size: 14px;
+      line-height: 22px;
+      // toDo: Растягивать по контенту
+      max-width: 238px;
+    }
+    &-title {
+      color: $black-100;
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 70px;
+      max-width: 300px;
+    }
+    &-text {
+      font-size: 18px;
+      line-height: 30px;
+      max-width: 600px;
+    }
+    &-button {
+      display: flex;
+      padding: 16px 28px;
+      align-items: center;
+      border-radius: 100px;
+      font-weight: 500;
+      line-height: 26px;
+      gap: 8px;
+      cursor: pointer;
+      &_watch {
+        background: $black-100;
+        color: $white;
+      }
+      &_get-started {
+        border-radius: 100px;
+        border: 1px solid $gray-60;
+      }
+    }
+    // Здесь нужно подумать как слева оторабажать отступ по wrapper-у, а картинка должна прилепляться к правому краю
+    &-right {
+      width: 50%;
+    }
+    &-picture {
+      transform: translateX(100px);
+      padding-top: 50px;
+    }
+  }
+</style>
+
+<script></script>

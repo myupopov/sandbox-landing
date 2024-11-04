@@ -52,33 +52,15 @@ const { title } = Astro.props;
     --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
   }
   html {
-    background: #ffffff;
-    color: #1f2d45;
+    background: $white;
+    color: $gray-70;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 26px;
     font-family: 'Proxima Nova', sans-serif;
   }
-  li {
-    list-style-type: initial;
-  }
-  .title {
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 40px;
-    @include media('>=tablet') {
-      font-size: 40px;
-      line-height: 47px;
-    }
-  }
-  .title-main {
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 48px;
-    @include media('>=desktop') {
-      font-size: 64px;
-      line-height: 72px;
-    }
+  .wrapper {
+    @include pageContent;
   }
 </style>

@@ -1,42 +1,123 @@
 ---
-
+import { localizations } from '../../scripts/localizations.js';
+import { settings } from '../../scripts/settings.js';
 import NavButton from './NavButton.astro';
 import logoSvg from '../../images/header/logo.svg';
+import searchSvg from '../../images/header/search.svg';
+import slashSvg from '../../images/header/slash.svg';
+import chatPng from '../../images/header/chat.png';
+import exitSvg from '../../images/header/exit.svg';
+import sunSvg from '../../images/header/sun.svg';
 
+// Будем ли мы использовать env переменные не уверен, но как один из вариантов:
+const lang: keyof Object = import.meta.env.PUBLIC_LOCAL;
+
+// Версия chatAI вероянто будет приходить от бэка
+const chatAIVersion = 'v1.0.3';
+
+const ctn = localizations.header;
+
+// Ниже для тегов alt получаею красное подчеркивание если пишу просто alt={ctn.alt.logo[lang]
+// Type 'Function | (() => string) | (() => string) | (() => Object) | ((v: PropertyKey) => boolean) | ((v: Object) => boolean) | ((v: PropertyKey) => boolean)' is not assignable to type 'string | null | undefined'.
+// Type 'Function' is not assignable to type 'string'.ts(2322)
+// astro-jsx.d.ts(740, 3): The expected type comes from property 'alt' which is declared here on type 'ImgHTMLAttributes'
+// Вероятно тут есть ответ https://ru.stackoverflow.com/questions/1531837/%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%BD%D0%B5-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D0%B4-typescript
+// Пока что решил просто преобразовывать в строку .toString()
 ---
 
-<header class="mt-[12px] h-[64px]">
+<header class="mt-[12px] flex h-[64px] justify-between">
   <div class="flex items-center">
-    <div  class="w-[42px] ml-[32px]">
+    <div class="ml-[32px] w-[42px]">
       <a href="./index.html">
-        <img src={logoSvg.src} alt="logo" />
+        <img src={logoSvg.src} alt={ctn.alt.logo[lang].toString()} />
       </a>
     </div>
-    <div class="w-[560px] px-[16px] py-[10px] ml-[64px]">
-
+    <div class="search ml-[64px] flex">
+      <input class="search-input" />
+      <img class="search-image" src={searchSvg.src} alt={ctn.alt.search[lang].toString()} />
+      <div class="search-slash">
+        <img src={slashSvg.src} alt={ctn.alt.slash[lang].toString()} />
+      </div>
     </div>
-
-
-
-
-
-  </div>
-  <nav class="hidden flex-row items-center md:flex">
-    <NavButton
-      link="./"
-      name="link"
-    />
-  </nav>
-
+    <div class="ml-[24px] flex">
+      <div class="h-[46px] w-[46px]">
+        <img src={chatPng.src} alt={ctn.alt.chat[lang].toString()} />
+      </div>
+      <div class="ml-[8px]">
+        <div>{ctn.chatAI[lang]}</div>
+        <div>{chatAIVersion}</div>
+      </div>
+    </div>
   </div>
 
-  <div id="modal" class="modal hidden">
+  <div class="mr-[32px] flex items-center">
+    <div class="mr-[42px] flex items-center">
+      <nav class="hidden flex-row items-center gap-[8px] md:flex">
+        {settings.isBanking && <NavButton link="./" name="Banking" />}
+        {settings.isECommerce && <NavButton link="./" name="eCommerce" />}
+        {settings.isServices && <NavButton link="./" name="Our Services" />}
+        {settings.isFAQ && <NavButton link="./" name="FAQ" />}
+        {settings.isContactUs && <NavButton link="./" name="Contact us" />}
+      </nav>
+      <div class="cursor-pointer">
+        <img src={sunSvg.src} />
+      </div>
+    </div>
+    <div class="login">
+      <div>
+        <img src={exitSvg.src} />
+      </div>
+      <div>{ctn.login[lang]}</div>
+    </div>
   </div>
 
+  <div id="modal" class="modal hidden"></div>
 </header>
 
 <style lang="scss">
+  .search {
+    position: relative;
+    &-input {
+      width: 480px;
+      padding: 10px 16px 10px 42px;
+      border-radius: 100px;
+      background: $gray-8;
+      &:focus {
+        outline: none;
+      }
+      // Здесь надо сделать автоматическое расстягивание на всю свободную ширину внутри блока
+      @include media('>=1570px') {
+        width: 560px;
+      }
+    }
+    &-image {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+    }
+    &-slash {
+      display: flex;
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: 1px solid $gray-16;
+      border-radius: 6px;
+      background: $white;
+    }
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 8px;
+    border: 1px solid $gray-60;
+    border-radius: 100px;
+    cursor: pointer;
+  }
 </style>
 
-<script>
-</script>
+<script></script>
